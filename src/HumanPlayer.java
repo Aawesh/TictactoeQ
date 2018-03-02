@@ -18,14 +18,13 @@ public class HumanPlayer {
             System.out.println("Enter the position starting from 0 in row major order:");
             moveIndex = scanner.nextInt();
         }while(!g.isValidMove(moveIndex));
-        g.updateBoard(moveIndex,turn);
 
+        g.updateBoard(moveIndex,turn);
         //4. Update Q table for the move performed
         double reward = getReward(g.getBoard(),turn,g);
         if(reward != 0){
-            Driver.qTable.updateQtable(aiPlayer.getCurrentState(),aiPlayer.getMoveIndex(),reward);
+            Driver.qTable.updateQtable(aiPlayer.getCurrentState(),aiPlayer.getMoveIndex(),reward,"human");
         }
-
     }
 
     public static double getReward(String board,boolean turn,Game g){
@@ -154,6 +153,5 @@ public class HumanPlayer {
     public static boolean isTerminalState(){
         return terminalState;
     }
-
 
 }

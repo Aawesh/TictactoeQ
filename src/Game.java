@@ -45,7 +45,7 @@ public class Game {
     }
 
     public boolean isValidMove(int moveIndex){
-        if(moveIndex == -1){
+        if(moveIndex <0 || moveIndex > 8){
             return false;
         }else{
             char[] state = boardStatus.toCharArray();

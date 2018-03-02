@@ -17,7 +17,7 @@ public class DummyAI {
     }
 
     public void makeMove(Game g,AIPlayer aiPlayer){
-        g.displayBoard();
+//        g.displayBoard();
         int moveIndex;
         do{
             moveIndex = random.nextInt(9);
@@ -27,7 +27,7 @@ public class DummyAI {
         //4. Update Q table for the move performed
         double reward = getReward(g.getBoard(),turn,g);
         if(reward != 0){
-            Driver.qTable.updateQtable(aiPlayer.getCurrentState(),aiPlayer.getMoveIndex(),reward);
+            Driver.qTable.updateQtable(aiPlayer.getCurrentState(),aiPlayer.getMoveIndex(),reward,"dummyAI");
         }
 
     }

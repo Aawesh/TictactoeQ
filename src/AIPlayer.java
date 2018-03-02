@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class AIPlayer {
     private boolean turn;
@@ -17,17 +14,18 @@ public class AIPlayer {
     }
 
     public void makeMove(Game g){
-        g.displayBoard();
+//        g.displayBoard();
 
+        double [] actionValues;
         do{
             //0. If the current board status is not in the Q table, add an entry
             this.currentState = g.getBoard();
             Driver.qTable.saveState(this.currentState);
 
-            //1. Select random value from the q table move if the reward is same for all move
-            double [] actionValues = Driver.qTable.getActionValueArray(this.currentState);
+            //1. Select random value from the q table move if the reward is same for all or some move
+            actionValues = Driver.qTable.getActionValueArray(this.currentState);
 
-            this.moveIndex = getAIMove(actionValues);
+            this.moveIndex = getAIMove(actionValues,this.currentState);
         }while(!g.isValidMove(this.moveIndex));
 
         //3. update the board with AI move
@@ -36,16 +34,16 @@ public class AIPlayer {
         //4. Update Q table for the move performed
         double reward = getReward(g.getBoard(),turn,g);
 
-        Driver.qTable.updateQtable(this.currentState,this.moveIndex,reward);
+        Driver.qTable.updateQtable(this.currentState,this.moveIndex,reward,"ai");
     }
 
 
     public static double getReward(String board,boolean turn,Game g){
         double reward;
-        //1. Winner
-        //2. Loser
-        //3. Draw
-        //4. Game continues
+        //0. Winner
+        //1. Loser
+        //2. Draw
+        //3. Game continues
 
         double [] actionValues;
 
@@ -57,7 +55,7 @@ public class AIPlayer {
                 terminalState = true;
                 actionValues = Driver.qTable.getActionValueArray(board);
                 if(actionValues != null){
-                    reward = actionValues[0];
+                    reward = actionValues[0]; // if the state is in qtable get the value from 0th index
                 }else{
                     Driver.qTable.saveState(board); //initializes all the action value pairs with 0
                     actionValues = Driver.qTable.getActionValueArray(board);
@@ -165,21 +163,31 @@ public class AIPlayer {
      *
      * @return index of movement
      */
-    public static int getAIMove(double [] actionValues){
-        int maxIndex = getIndexOfLargest(actionValues);
+    public static int getAIMove(double [] actionValues,String state){
+        int maxIndex = getIndexOfLargest(state,actionValues);
+        System.out.println("state = " + state);
+        System.out.println("Arrays.toString(actionValues) = " + Arrays.toString(actionValues));
+        System.out.println("maxIndex = " + maxIndex);
         if(maxIndex != -1){
             List indexList = new ArrayList();
+            char[] st = state.toCharArray();
             for ( int i = 0; i < actionValues.length; i++ ){
-                if ( actionValues[i] >= actionValues[maxIndex] ){
-                    indexList.add(i);
+                if(st[i] == ' '){ //Exclude filled position for selection of next move
+                    if ( actionValues[i] == actionValues[maxIndex] ){ //TODO must be equal to because we select random from same values
+                        indexList.add(i);
+                    }
                 }
             }
 
             if(indexList.size() == 1){
-                return maxIndex;
+                System.out.println("indexList = " + indexList);
+                System.out.println("maxIndex = " + maxIndex);
+                return (int) indexList.get(0);
             }else{
                 Random randomizer = new Random();
                 int random = (int) indexList.get(randomizer.nextInt(indexList.size()));
+                System.out.println("indexList = " + indexList);
+                System.out.println("random = " + random);
                 return random;
             }
         }else{
@@ -187,13 +195,29 @@ public class AIPlayer {
         }
     }
 
-    public static int getIndexOfLargest( double[] array ){
-        if ( array == null || array.length == 0 ) return -1; // null or empty
+    public static int getIndexOfLargest( String state, double[] array ){
 
-        int largest = 0;
+        char[] st = state.toCharArray();
+
+        if ( array == null || array.length == 0 ){
+            return -1; // null or empty
+        }
+
+        int largest = 0; //Cannot say 0th index is the largest value, might be an invalid move
+        //initializing largest to the first index that has empty space in the state
+        for(int i = 0;i<array.length;i++){
+            if(st[i] == ' '){
+                largest = i;
+            }
+        }
+
         for ( int i = 1; i < array.length; i++ )
         {
-            if ( array[i] > array[largest] ) largest = i;
+            if(st[i] == ' '){ //Exclude filled position for selection of next move
+                if ( array[i] > array[largest] ){
+                    largest = i;
+                }
+            }
         }
         return largest; // position of the first largest found
     }

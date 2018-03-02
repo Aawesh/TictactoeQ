@@ -28,19 +28,26 @@ public class Driver {
         aiPlayer = new AIPlayer(turn);
         dummyAI = new DummyAI(!turn);
 
-        int N = 255168;
+        int N = 255168; //possible games
         N = 1000000000;
+        N = 10000;
+        N=1000;
 
 
         for (int i = 0;i<N;i++){
             game.resetBoard();
-            aiPlayer.setTerminalState(false);
+//            aiPlayer.setTerminalState(false);
+            humanPlayer.setTerminalState(false);
             dummyAI.setTerminalState(false);
 
             //This loop is for one complete game. Need to run multiple times as per need
             while(true){
-                dummyAI.makeMove(game,aiPlayer);
+               /* dummyAI.makeMove(game,aiPlayer);
                 if(game.availableMoves() == 0 || dummyAI.isTerminalState()){
+                    break;
+                }*/
+                humanPlayer.makeMove(game,aiPlayer);
+                if(game.availableMoves() == 0 || humanPlayer.isTerminalState()){
                     break;
                 }
 
@@ -49,11 +56,11 @@ public class Driver {
                     break;
                 }
             }
+            game.displayBoard();
+            qTable.save();
         }
-        qTable.display();
 
-
-        for (int i = 0;i<5;i++){
+        /*for (int i = 0;i<100;i++){
             game.resetBoard();
             humanPlayer.setTerminalState(false);
             aiPlayer.setTerminalState(false);
@@ -69,10 +76,12 @@ public class Driver {
                 if(game.availableMoves() == 0 || aiPlayer.isTerminalState()){ //TODO if game is in terminal state then available moves should be zero
                     break;
                 }
-                qTable.display();
+//                qTable.display();
             }
             game.displayBoard();
 //            qTable.display();
-        }
+        }*/
+
+        qTable.save();
     }
 }
