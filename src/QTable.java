@@ -2,12 +2,14 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class QTable {
     private HashMap<String,double []> qMap;
 
     public QTable(){
         qMap = loadQTable();
+
     }
 
     /**
@@ -17,28 +19,24 @@ public class QTable {
      */
     public void updateQtable(String state, int actionIndex, double reward,String who){
         double [] actionValues = qMap.get(state);
-        actionValues[actionIndex] = reward;
 
-        checkValidityOfQTable(state,reward,actionIndex,who);
+        char[] st = state.toCharArray();
+        if(st[actionIndex] == ' '){
+            actionValues[actionIndex] = reward;
+        }else{
+            System.out.println("Trying to update invalid move");
+        }
 
         qMap.put(state,actionValues);
     }
 
-    private void checkValidityOfQTable(String state, double reward, int actionIndex,String who) {
-        char[] st = state.toCharArray();
-        if(st[actionIndex] != ' '){
-            System.out.println("Error in=="+state+":"+actionIndex+":"+reward+":"+who);
-        }
-
-    }
 
     public HashMap<String, double []> loadQTable(){
         HashMap<String, double []> mMap = new HashMap<>();
-
         try (BufferedReader br = new BufferedReader(new FileReader("qtable.txt"))) {
             String line;
-            double [] values = new double[9];
             while ((line = br.readLine()) != null) {
+                double [] values = new double[9];
                 String[] data = line.split(":");
                 String[] array = data[1].split(",");
                 for(int i= 0;i<9;i++){
@@ -58,6 +56,7 @@ public class QTable {
                 exp.printStackTrace();
             }
         }
+
 
         return mMap;
     }
@@ -100,6 +99,7 @@ public class QTable {
         }catch(Exception e){
             e.printStackTrace();
         }
+
 
         for (String state : qMap.keySet()) {
             writeToFile("qtable.txt",state +":"+Arrays.toString(qMap.get(state)).replace("[","").replace("]",""),true);

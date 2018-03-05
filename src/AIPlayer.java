@@ -26,6 +26,8 @@ public class AIPlayer {
             actionValues = Driver.qTable.getActionValueArray(this.currentState);
 
             this.moveIndex = getAIMove(actionValues,this.currentState);
+
+
         }while(!g.isValidMove(this.moveIndex));
 
         //3. update the board with AI move
@@ -165,9 +167,6 @@ public class AIPlayer {
      */
     public static int getAIMove(double [] actionValues,String state){
         int maxIndex = getIndexOfLargest(state,actionValues);
-        System.out.println("state = " + state);
-        System.out.println("Arrays.toString(actionValues) = " + Arrays.toString(actionValues));
-        System.out.println("maxIndex = " + maxIndex);
         if(maxIndex != -1){
             List indexList = new ArrayList();
             char[] st = state.toCharArray();
@@ -180,14 +179,10 @@ public class AIPlayer {
             }
 
             if(indexList.size() == 1){
-                System.out.println("indexList = " + indexList);
-                System.out.println("maxIndex = " + maxIndex);
                 return (int) indexList.get(0);
             }else{
                 Random randomizer = new Random();
                 int random = (int) indexList.get(randomizer.nextInt(indexList.size()));
-                System.out.println("indexList = " + indexList);
-                System.out.println("random = " + random);
                 return random;
             }
         }else{

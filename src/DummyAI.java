@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -17,7 +15,7 @@ public class DummyAI {
     }
 
     public void makeMove(Game g,AIPlayer aiPlayer){
-//        g.displayBoard();
+        g.displayBoard();
         int moveIndex;
         do{
             moveIndex = random.nextInt(9);

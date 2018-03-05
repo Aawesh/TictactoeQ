@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class Driver {
@@ -15,6 +16,7 @@ public class Driver {
      */
     public static void main(String[] args){
         game = new Game(); //TODO pass parameters like discount and all
+
         qTable = new QTable();
 
         //Turn is determined randomly. sometimes human play 'X' i.e. 1 sometimes 'O', i.e 0
@@ -30,58 +32,84 @@ public class Driver {
 
         int N = 255168; //possible games
         N = 1000000000;
-        N = 10000;
-        N=1000;
+        N=10000000;
+        N=0;
 
+        boolean swapTurn;
 
         for (int i = 0;i<N;i++){
             game.resetBoard();
-//            aiPlayer.setTerminalState(false);
-            humanPlayer.setTerminalState(false);
+            aiPlayer.setTerminalState(false);
             dummyAI.setTerminalState(false);
 
-            //This loop is for one complete game. Need to run multiple times as per need
-            while(true){
-               /* dummyAI.makeMove(game,aiPlayer);
-                if(game.availableMoves() == 0 || dummyAI.isTerminalState()){
-                    break;
-                }*/
-                humanPlayer.makeMove(game,aiPlayer);
-                if(game.availableMoves() == 0 || humanPlayer.isTerminalState()){
-                    break;
-                }
+            swapTurn = random.nextBoolean();
 
-                aiPlayer.makeMove(game);
-                if(game.availableMoves() == 0 || aiPlayer.isTerminalState()){
-                    break;
+            if(swapTurn){
+                while(true){
+                    aiPlayer.makeMove(game);
+                    if(game.availableMoves() == 0 || aiPlayer.isTerminalState()){
+                        break;
+                    }
+
+                    dummyAI.makeMove(game,aiPlayer);
+                    if(game.availableMoves() == 0 || dummyAI.isTerminalState()){
+                        break;
+                    }
+                }
+            }else{
+                while(true){
+                    dummyAI.makeMove(game,aiPlayer);
+                    if(game.availableMoves() == 0 || dummyAI.isTerminalState()){
+                        break;
+                    }
+
+                    aiPlayer.makeMove(game);
+                    if(game.availableMoves() == 0 || aiPlayer.isTerminalState()){
+                        break;
+                    }
                 }
             }
             game.displayBoard();
-            qTable.save();
         }
 
-        /*for (int i = 0;i<100;i++){
+        int P = 100;
+        for (int i = 0;i<P;i++){
             game.resetBoard();
-            humanPlayer.setTerminalState(false);
             aiPlayer.setTerminalState(false);
+            humanPlayer.setTerminalState(false);
 
-            //This loop is for one complete game. Need to run multiple times as per need
-            while(true){
-                humanPlayer.makeMove(game,aiPlayer);
-                if(game.availableMoves() == 0 || humanPlayer.isTerminalState()){ //TODO if game is in terminal state then available moves should be zero
-                    break;
-                }
+            swapTurn = random.nextBoolean();
 
-                aiPlayer.makeMove(game);
-                if(game.availableMoves() == 0 || aiPlayer.isTerminalState()){ //TODO if game is in terminal state then available moves should be zero
-                    break;
+            if(swapTurn){
+                while(true){
+                    aiPlayer.makeMove(game);
+                    if(game.availableMoves() == 0 || aiPlayer.isTerminalState()){
+                        break;
+                    }
+
+                    humanPlayer.makeMove(game,aiPlayer);
+                    if(game.availableMoves() == 0 || humanPlayer.isTerminalState()){
+                        break;
+                    }
                 }
-//                qTable.display();
+            }else{
+                while(true){
+                    humanPlayer.makeMove(game,aiPlayer);
+                    if(game.availableMoves() == 0 || humanPlayer.isTerminalState()){
+                        break;
+                    }
+
+                    aiPlayer.makeMove(game);
+                    if(game.availableMoves() == 0 || aiPlayer.isTerminalState()){
+                        break;
+                    }
+                }
             }
+
             game.displayBoard();
-//            qTable.display();
-        }*/
+        }
 
         qTable.save();
+
     }
 }
