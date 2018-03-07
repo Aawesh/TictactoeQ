@@ -7,8 +7,7 @@ public class DummyAI {
     private static boolean terminalState;
     Random random;
 
-    public DummyAI(boolean turn){
-        this.turn = turn;
+    public DummyAI(){
         this.scanner = new Scanner(System.in);
         terminalState = false;
         random = new Random();
@@ -157,5 +156,8 @@ public class DummyAI {
         return terminalState;
     }
 
+    public void setTurn(boolean turn){
+        this.turn = turn;
+    }
 
 }

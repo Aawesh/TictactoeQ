@@ -5,8 +5,7 @@ public class HumanPlayer {
     private Scanner scanner;
     private static boolean terminalState;
 
-    public HumanPlayer(boolean turn){
-        this.turn = turn;
+    public HumanPlayer(){
         this.scanner = new Scanner(System.in);
         terminalState = false;
     }
@@ -152,6 +151,10 @@ public class HumanPlayer {
 
     public static boolean isTerminalState(){
         return terminalState;
+    }
+
+    public void setTurn(boolean turn){
+        this.turn = turn;
     }
 
 }

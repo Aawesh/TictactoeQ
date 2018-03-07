@@ -23,12 +23,9 @@ public class Driver {
         Random random = new Random();
         boolean turn = random.nextBoolean();
 
-        //TODO remove this code
-        turn = true;
-
-        humanPlayer = new HumanPlayer(!turn);
-        aiPlayer = new AIPlayer(turn);
-        dummyAI = new DummyAI(!turn);
+        humanPlayer = new HumanPlayer();
+        aiPlayer = new AIPlayer();
+        dummyAI = new DummyAI();
 
         int N = 255168; //possible games
         N = 1000000000;
@@ -43,6 +40,10 @@ public class Driver {
             dummyAI.setTerminalState(false);
 
             swapTurn = random.nextBoolean();
+            turn = random.nextBoolean();
+
+            aiPlayer.setTurn(turn);
+            dummyAI.setTurn(!turn);
 
             if(swapTurn){
                 while(true){
@@ -79,6 +80,11 @@ public class Driver {
             humanPlayer.setTerminalState(false);
 
             swapTurn = random.nextBoolean();
+            swapTurn = false;
+            turn = random.nextBoolean();
+            turn = true;
+            aiPlayer.setTurn(turn);
+            humanPlayer.setTurn(!turn);
 
             if(swapTurn){
                 while(true){

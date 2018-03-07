@@ -6,8 +6,7 @@ public class AIPlayer {
     private int moveIndex;
     private static boolean terminalState;
 
-    public AIPlayer(boolean turn){
-        this.turn = turn;
+    public AIPlayer(){
         this.currentState = "";
         this.moveIndex = 0;
         terminalState = false;
@@ -246,5 +245,9 @@ public class AIPlayer {
 
     public static boolean isTerminalState(){
         return terminalState;
+    }
+
+    public void setTurn(boolean turn){
+        this.turn = turn;
     }
 }
