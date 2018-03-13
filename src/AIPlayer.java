@@ -180,7 +180,7 @@ public class AIPlayer {
             if(indexList.size() == 1){
                 return (int) indexList.get(0);
             }else{
-                Random randomizer = new Random();
+                Random randomizer = new Random(System.currentTimeMillis());
                 int random = (int) indexList.get(randomizer.nextInt(indexList.size()));
                 return random;
             }

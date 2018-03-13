@@ -80,9 +80,9 @@ public class Driver {
             humanPlayer.setTerminalState(false);
 
             swapTurn = random.nextBoolean();
-            swapTurn = false;
-            turn = random.nextBoolean();
-            turn = true;
+//            swapTurn = false;
+//            turn = random.nextBoolean();
+            turn = false;
             aiPlayer.setTurn(turn);
             humanPlayer.setTurn(!turn);
 
