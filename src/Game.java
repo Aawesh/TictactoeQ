@@ -3,11 +3,11 @@ import java.util.List;
 
 public class Game {
     private String boardStatus;
-    private double discount;
+    private double temperature;
 
     public Game(){
-        boardStatus = "         ";
-        discount = 0.9;
+        this.boardStatus = "         ";
+        this.temperature = 0.5;
     }
 
     public void displayBoard(){
@@ -59,5 +59,9 @@ public class Game {
 
     public void resetBoard(){
         boardStatus = "         ";
+    }
+
+    public double getTemperature(){
+        return this.temperature;
     }
 }

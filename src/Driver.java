@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Random;
 
 public class Driver {
@@ -28,9 +27,8 @@ public class Driver {
         dummyAI = new DummyAI();
 
         int N = 255168; //possible games
-        N = 1000000000;
-        N=10000000;
-        N=0;
+        N = 100000000;
+//        N=0;
 
         boolean swapTurn;
 
@@ -40,8 +38,9 @@ public class Driver {
             dummyAI.setTerminalState(false);
 
             swapTurn = random.nextBoolean();
-            turn = random.nextBoolean();
+//            turn = random.nextBoolean();
 
+            turn = false;
             aiPlayer.setTurn(turn);
             dummyAI.setTurn(!turn);
 
@@ -73,7 +72,10 @@ public class Driver {
             game.displayBoard();
         }
 
-        int P = 100;
+        qTable.save();
+
+
+        int P = 0;
         for (int i = 0;i<P;i++){
             game.resetBoard();
             aiPlayer.setTerminalState(false);
@@ -113,9 +115,8 @@ public class Driver {
             }
 
             game.displayBoard();
-        }
 
-        qTable.save();
+        }
 
     }
 }

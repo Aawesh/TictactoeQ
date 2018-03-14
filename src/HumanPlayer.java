@@ -19,11 +19,11 @@ public class HumanPlayer {
         }while(!g.isValidMove(moveIndex));
 
         g.updateBoard(moveIndex,turn);
-        //4. Update Q table for the move performed
+        /*//4. Update Q table for the move performed
         double reward = getReward(g.getBoard(),turn,g);
         if(reward != 0){
             Driver.qTable.updateQtable(aiPlayer.getCurrentState(),aiPlayer.getMoveIndex(),reward,"human");
-        }
+        }*/
     }
 
     public static double getReward(String board,boolean turn,Game g){
