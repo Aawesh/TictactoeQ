@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="549835eb-b590-42ba-80bd-db065220da84" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/qtable_old.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tictactoe/AIPlayer.class" afterPath="$PROJECT_DIR$/out/production/Tictactoe/AIPlayer.class" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/qtable.txt" afterPath="$PROJECT_DIR$/qtable_old.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tictactoe/Driver.class" afterPath="$PROJECT_DIR$/out/production/Tictactoe/Driver.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tictactoe/Game.class" afterPath="$PROJECT_DIR$/out/production/Tictactoe/Game.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tictactoe/HumanPlayer.class" afterPath="$PROJECT_DIR$/out/production/Tictactoe/HumanPlayer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qtable.txt" afterPath="$PROJECT_DIR$/qtable.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AIPlayer.java" afterPath="$PROJECT_DIR$/src/AIPlayer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Driver.java" afterPath="$PROJECT_DIR$/src/Driver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Game.java" afterPath="$PROJECT_DIR$/src/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HumanPlayer.java" afterPath="$PROJECT_DIR$/src/HumanPlayer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,35 +39,30 @@
       <file leaf-file-name="AIPlayer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AIPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="26" column="38" lean-forward="false" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="38" />
-              <folding>
-                <marker date="1521049296251" expanded="false" signature="9156:9166" ph=" { " />
-                <marker date="1521049296251" expanded="false" signature="9188:9194" ph=" }" />
-                <marker date="1521049296251" expanded="false" signature="9231:9242" ph=" { " />
-                <marker date="1521049296251" expanded="false" signature="9267:9273" ph=" }" />
-                <marker date="1521049296251" expanded="false" signature="9304:9315" ph=" { " />
-                <marker date="1521049296251" expanded="false" signature="9337:9343" ph=" }" />
-                <marker date="1521049296251" expanded="false" signature="9399:9409" ph=" { " />
-                <marker date="1521049296251" expanded="false" signature="9431:9437" ph=" }" />
-                <marker date="1521049296251" expanded="false" signature="9482:9492" ph=" { " />
-                <marker date="1521049296251" expanded="false" signature="9513:9519" ph=" }" />
-                <marker date="1521049296251" expanded="false" signature="9558:9568" ph=" { " />
-                <marker date="1521049296251" expanded="false" signature="9585:9591" ph=" }" />
-              </folding>
+            <state relative-caret-position="3276">
+              <caret line="182" column="67" lean-forward="false" selection-start-line="182" selection-start-column="67" selection-end-line="182" selection-end-column="67" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="qtable_old.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/qtable_old.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="3" column="56" lean-forward="false" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="936">
-              <caret line="54" column="22" lean-forward="false" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="22" />
+            <state relative-caret-position="536">
+              <caret line="52" column="28" lean-forward="false" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1653#1654#0" expanded="true" />
-                <element signature="e#1692#1693#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -81,21 +71,13 @@
       <file leaf-file-name="QTable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/QTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="119" column="40" lean-forward="false" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="40" />
+            <state relative-caret-position="1764">
+              <caret line="104" column="35" lean-forward="false" selection-start-line="104" selection-start-column="35" selection-end-line="104" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1762#1763#0" expanded="true" />
+                <element signature="e#1794#1795#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Driver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Driver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="29" column="12" lean-forward="true" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="21" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -103,18 +85,18 @@
       <file leaf-file-name="qtable.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/qtable.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-92906">
-              <caret line="2394" column="51" lean-forward="false" selection-start-line="2393" selection-start-column="34" selection-end-line="2394" selection-end-column="51" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="qtable_old.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/qtable_old.txt">
+      <file leaf-file-name="Driver.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Driver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-146551">
-              <caret line="0" column="53" lean-forward="false" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
+            <state relative-caret-position="288">
+              <caret line="16" column="21" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -141,11 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>:1.0.*1.0</find>
-      <find>\[1.0.*1.0</find>
-      <find>save</find>
-      <find>After</find>
-      <find>Before</find>
       <find>loadQ</find>
       <find>loadQTable</find>
       <find>values</find>
@@ -171,12 +148,18 @@
       <find>=</find>
       <find>getAImove</find>
       <find>turn</find>
+      <find>qtable_old</find>
+      <find>Game</find>
+      <find>Game g</find>
+      <find>Game game</find>
+      <find>game</find>
     </findStrings>
     <replaceStrings>
       <replace>System.out.println</replace>
       <replace>Driver.qTable</replace>
       <replace>bStatus[</replace>
       <replace>indexList</replace>
+      <replace>qtable</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -193,12 +176,12 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/qtable_old.txt" />
         <option value="$PROJECT_DIR$/src/DummyAI.java" />
-        <option value="$PROJECT_DIR$/qtable.txt" />
-        <option value="$PROJECT_DIR$/src/Game.java" />
-        <option value="$PROJECT_DIR$/src/QTable.java" />
         <option value="$PROJECT_DIR$/src/AIPlayer.java" />
         <option value="$PROJECT_DIR$/src/HumanPlayer.java" />
+        <option value="$PROJECT_DIR$/src/QTable.java" />
+        <option value="$PROJECT_DIR$/qtable.txt" />
         <option value="$PROJECT_DIR$/src/Driver.java" />
+        <option value="$PROJECT_DIR$/src/Game.java" />
       </list>
     </option>
   </component>
@@ -235,6 +218,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -246,9 +230,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -412,7 +395,9 @@
       <workItem from="1520959312428" duration="2568000" />
       <workItem from="1520975339863" duration="779000" />
       <workItem from="1520993027368" duration="1801000" />
-      <workItem from="1521040927392" duration="9423000" />
+      <workItem from="1521040927392" duration="11747000" />
+      <workItem from="1521063287844" duration="7756000" />
+      <workItem from="1521132486742" duration="1833000" />
     </task>
     <task id="LOCAL-00001" summary="load and save q table from file and to file">
       <created>1519851397636</created>
@@ -449,32 +434,36 @@
       <option name="project" value="LOCAL" />
       <updated>1520959738531</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Boltzman greedy algorithm implemented">
+      <created>1521050797844</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1521050797844</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140867000" />
+    <option name="totallyTimeSpent" value="152780000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="276" width="1920" height="1053" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852387" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31853497" sideWeight="0.508547" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.84572697" sideWeight="0.51282054" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45394006" sideWeight="0.491453" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.514658" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24750277" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.56048834" sideWeight="0.4871795" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41065484" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17681624" sideWeight="0.4945355" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18108974" sideWeight="0.4945355" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3218646" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.48534203" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -485,7 +474,10 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852387" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.514658" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3218646" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -509,10 +501,10 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32963374" sideWeight="0.491453" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.514658" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24750277" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17681624" sideWeight="0.4945355" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.84572697" sideWeight="0.491453" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.514658" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41065484" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17895299" sideWeight="0.4945355" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3218646" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16452992" sideWeight="0.5054645" order="5" side_tool="true" content_ui="tabs" />
@@ -530,7 +522,8 @@
     <MESSAGE value="loadQTable function corrected for loading valid values" />
     <MESSAGE value="Trained for both turns and swapturns" />
     <MESSAGE value="set turn to false. So Human player is always X and AI is always 0. But the turn is random" />
-    <option name="LAST_COMMIT_MESSAGE" value="set turn to false. So Human player is always X and AI is always 0. But the turn is random" />
+    <MESSAGE value="Boltzman greedy algorithm implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Boltzman greedy algorithm implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -543,20 +536,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/HumanPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="16" lean-forward="false" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/QTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="522">
           <caret line="33" column="51" lean-forward="true" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1762#1763#0" expanded="true" />
+            <element signature="e#1794#1795#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -565,20 +552,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1872">
           <caret line="104" column="21" lean-forward="false" selection-start-line="104" selection-start-column="21" selection-end-line="104" selection-end-column="21" />
-          <folding>
-            <marker date="1521049296251" expanded="false" signature="9156:9166" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9188:9194" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9231:9242" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9267:9273" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9304:9315" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9337:9343" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9399:9409" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9431:9437" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9482:9492" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9513:9519" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9558:9568" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9585:9591" ph=" }" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -588,8 +562,6 @@
           <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1653#1654#0" expanded="true" />
-            <element signature="e#1692#1693#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -626,6 +598,8 @@
           <caret line="123" column="32" lean-forward="true" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1762#1763#0" expanded="true" />
+            <element signature="e#1794#1795#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -634,20 +608,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1044">
           <caret line="58" column="41" lean-forward="false" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
-          <folding>
-            <marker date="1521049296251" expanded="false" signature="9156:9166" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9188:9194" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9231:9242" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9267:9273" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9304:9315" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9337:9343" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9399:9409" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9431:9437" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9482:9492" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9513:9519" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9558:9568" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9585:9591" ph=" }" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -657,8 +618,6 @@
           <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1653#1654#0" expanded="true" />
-            <element signature="e#1692#1693#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -669,6 +628,8 @@
           <caret line="91" column="16" lean-forward="false" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1762#1763#0" expanded="true" />
+            <element signature="e#1794#1795#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -703,20 +664,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4176">
           <caret line="236" column="15" lean-forward="false" selection-start-line="236" selection-start-column="15" selection-end-line="236" selection-end-column="15" />
-          <folding>
-            <marker date="1521049296251" expanded="false" signature="9156:9166" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9188:9194" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9231:9242" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9267:9273" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9304:9315" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9337:9343" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9399:9409" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9431:9437" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9482:9492" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9513:9519" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9558:9568" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9585:9591" ph=" }" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -726,6 +674,8 @@
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1762#1763#0" expanded="true" />
+            <element signature="e#1794#1795#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -767,20 +717,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2934">
           <caret line="163" column="32" lean-forward="false" selection-start-line="163" selection-start-column="32" selection-end-line="163" selection-end-column="32" />
-          <folding>
-            <marker date="1521049296251" expanded="false" signature="9156:9166" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9188:9194" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9231:9242" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9267:9273" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9304:9315" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9337:9343" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9399:9409" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9431:9437" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9482:9492" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9513:9519" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9558:9568" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9585:9591" ph=" }" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -822,20 +759,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
           <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
-          <folding>
-            <marker date="1521049296251" expanded="false" signature="9156:9166" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9188:9194" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9231:9242" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9267:9273" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9304:9315" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9337:9343" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9399:9409" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9431:9437" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9482:9492" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9513:9519" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9558:9568" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9585:9591" ph=" }" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -845,8 +769,6 @@
           <caret line="46" column="19" lean-forward="false" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1653#1654#0" expanded="true" />
-            <element signature="e#1692#1693#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -865,6 +787,8 @@
           <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1762#1763#0" expanded="true" />
+            <element signature="e#1794#1795#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -881,20 +805,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
           <caret line="42" column="25" lean-forward="false" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
-          <folding>
-            <marker date="1521049296251" expanded="false" signature="9156:9166" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9188:9194" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9231:9242" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9267:9273" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9304:9315" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9337:9343" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9399:9409" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9431:9437" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9482:9492" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9513:9519" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9558:9568" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9585:9591" ph=" }" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -930,8 +841,6 @@
           <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1653#1654#0" expanded="true" />
-            <element signature="e#1692#1693#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -942,6 +851,8 @@
           <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1762#1763#0" expanded="true" />
+            <element signature="e#1794#1795#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -986,28 +897,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="936">
-          <caret line="54" column="22" lean-forward="false" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1653#1654#0" expanded="true" />
-            <element signature="e#1692#1693#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/QTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="119" column="40" lean-forward="false" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HumanPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -1016,48 +905,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AIPlayer.java">
+    <entry file="file://$PROJECT_DIR$/qtable_old.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="26" column="38" lean-forward="false" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="38" />
+        <state relative-caret-position="0">
+          <caret line="0" column="53" lean-forward="false" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qtable_old.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="56" lean-forward="false" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/QTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1764">
+          <caret line="104" column="35" lean-forward="false" selection-start-line="104" selection-start-column="35" selection-end-line="104" selection-end-column="35" />
           <folding>
-            <marker date="1521049296251" expanded="false" signature="9156:9166" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9188:9194" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9231:9242" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9267:9273" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9304:9315" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9337:9343" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9399:9409" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9431:9437" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9482:9492" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9513:9519" ph=" }" />
-            <marker date="1521049296251" expanded="false" signature="9558:9568" ph=" { " />
-            <marker date="1521049296251" expanded="false" signature="9585:9591" ph=" }" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1762#1763#0" expanded="true" />
+            <element signature="e#1794#1795#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Driver.java">
+    <entry file="file://$PROJECT_DIR$/src/AIPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="29" column="12" lean-forward="true" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="21" />
+        <state relative-caret-position="3276">
+          <caret line="182" column="67" lean-forward="false" selection-start-line="182" selection-start-column="67" selection-end-line="182" selection-end-column="67" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/qtable.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-92906">
-          <caret line="2394" column="51" lean-forward="false" selection-start-line="2393" selection-start-column="34" selection-end-line="2394" selection-end-column="51" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/qtable_old.txt">
+    <entry file="file://$PROJECT_DIR$/src/Driver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-146551">
-          <caret line="0" column="53" lean-forward="false" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
+        <state relative-caret-position="288">
+          <caret line="16" column="21" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="52" column="28" lean-forward="false" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

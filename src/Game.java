@@ -7,7 +7,7 @@ public class Game {
 
     public Game(){
         this.boardStatus = "         ";
-        this.temperature = 0.5;
+        this.temperature = 0.02;
     }
 
     public void displayBoard(){

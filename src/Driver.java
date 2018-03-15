@@ -27,8 +27,9 @@ public class Driver {
         dummyAI = new DummyAI();
 
         int N = 255168; //possible games
-        N = 100000000;
-//        N=0;
+//        N = 100000000;
+//        N=100000000;
+        N=0;
 
         boolean swapTurn;
 
@@ -75,7 +76,7 @@ public class Driver {
         qTable.save();
 
 
-        int P = 0;
+        int P = 100;
         for (int i = 0;i<P;i++){
             game.resetBoard();
             aiPlayer.setTerminalState(false);
