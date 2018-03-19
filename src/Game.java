@@ -7,7 +7,7 @@ public class Game {
 
     public Game(){
         this.boardStatus = "         ";
-        this.temperature = 0.02;
+        this.temperature = 0.0;
     }
 
     public void displayBoard(){
@@ -63,5 +63,9 @@ public class Game {
 
     public double getTemperature(){
         return this.temperature;
+    }
+
+    public void setTemperature(double t){
+        this.temperature = t;
     }
 }

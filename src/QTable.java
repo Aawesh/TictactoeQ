@@ -74,6 +74,13 @@ public class QTable {
         return null;
     }
 
+    public boolean containsState(String state){
+        if(qMap.containsKey(state)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public void saveState(String state){
         if(!qMap.containsKey(state)){

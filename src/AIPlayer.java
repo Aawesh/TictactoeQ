@@ -1,3 +1,5 @@
+import org.apache.commons.math3.distribution.EnumeratedIntegerDistribution;
+
 import java.util.*;
 
 public class AIPlayer {
@@ -5,85 +7,147 @@ public class AIPlayer {
     private String currentState;
     private int moveIndex;
     private static boolean terminalState;
+    Random random;
 
     public AIPlayer(){
         this.currentState = "";
         this.moveIndex = 0;
         terminalState = false;
+        random = new Random();
     }
 
-    public void makeMove(Game g){
-//        g.displayBoard();
+    public void makeMove(Game g,boolean randomMoveFlag){
 
-        double [] actionValues;
-        do{
-            //0. If the current board status is not in the Q table, add an entry
-            this.currentState = g.getBoard();
-            Driver.qTable.saveState(this.currentState);
+        if(randomMoveFlag){
+            int moveIndex;
+            do{
+                moveIndex = random.nextInt(9);
+            }while(!g.isValidMove(moveIndex));
+            g.updateBoard(moveIndex,turn);
+        }else{
+            double [] actionValues;
+            do{
+                //0. If the current board status is not in the Q table, add an entry
+                this.currentState = g.getBoard();
+                Driver.qTable.saveState(this.currentState);
 
-            //1. Select random value from the q table move if the reward is same for all or some move
-            actionValues = Driver.qTable.getActionValueArray(this.currentState);
+                //1. Select random value from the q table move if the reward is same for all or some move
+                actionValues = Driver.qTable.getActionValueArray(this.currentState);
 
-            this.moveIndex = getAIMove(actionValues,this.currentState,g);
-        }while(!g.isValidMove(this.moveIndex));
+                this.moveIndex = getAIMove(actionValues,this.currentState,g);
+            }while(!g.isValidMove(this.moveIndex));
 
-        //3. update the board with AI move
-        g.updateBoard(this.moveIndex,turn);
+            //3. update the board with AI move
+            g.updateBoard(this.moveIndex,turn);
+            String nextState = g.getBoard();
 
-        //4. Update Q table for the move performed
-        double reward = getReward(g.getBoard(),turn,g);
+            if(!Driver.qTable.containsState(nextState)){
+                Driver.qTable.saveState(nextState); //initializes all the action value pairs with 0
+            }
 
-        Driver.qTable.updateQtable(this.currentState,this.moveIndex,reward,"ai");
+            findAndSetTerminalState(g.getBoard(),g);
+
+            double learnedSum;
+            if(terminalState){
+                learnedSum = getReward(nextState,g,turn);
+            }else{
+                learnedSum = (getReward(nextState,g,turn) + 0.8 * getMinReward(nextState));
+            }
+
+            //update a values
+            if(Driver.aMap.containsKey(currentState+"_"+moveIndex) == false){
+                Driver.aMap.put(currentState+"_"+moveIndex,2);
+            }else{
+                Driver.aMap.put(currentState+"_"+moveIndex,Driver.aMap.get(currentState+"_"+moveIndex)+1);
+            }
+
+
+            double inertiaSum = actionValues[this.moveIndex]; // get reward for current move in current state
+
+            double a = 1.0/(double)Driver.aMap.get(currentState+"_"+moveIndex);
+            double finalReward = (1.0 - a) * inertiaSum + a * learnedSum ;
+
+            Driver.qTable.updateQtable(this.currentState,this.moveIndex,finalReward,"ai");
+        }
+    }
+
+    public void makeLaernedMove(Game g){
+            double [] actionValues;
+            do{
+                //0. If the current board status is not in the Q table, add an entry
+                this.currentState = g.getBoard();
+                Driver.qTable.saveState(this.currentState);
+
+                //1. Select random value from the q table move if the reward is same for all or some move
+                actionValues = Driver.qTable.getActionValueArray(this.currentState);
+
+                this.moveIndex = getAIMove(actionValues,this.currentState,g);
+            }while(!g.isValidMove(this.moveIndex));
+        g.updateBoard(moveIndex,turn);
     }
 
 
-    public static double getReward(String board,boolean turn,Game g){
-        double reward;
-        //0. Winner
-        //1. Loser
-        //2. Draw
-        //3. Game continues
 
-        double [] actionValues;
-
+    private void findAndSetTerminalState(String board,Game g) {
         int winner = checkWinner(board,g);
-        switch (winner){
-            case 0:
-            case 1:
-            case 2:
-                terminalState = true;
-                actionValues = Driver.qTable.getActionValueArray(board);
-                if(actionValues != null){
-                    reward = actionValues[0]; // if the state is in qtable get the value from 0th index
-                }else{
-                    Driver.qTable.saveState(board); //initializes all the action value pairs with 0
-                    actionValues = Driver.qTable.getActionValueArray(board);
-                    if((winner == 1 && turn == true) || (winner == 0 && turn == false)){
-                        reward = 1;
-                    }else if((winner == 1 && turn == false) || (winner == 0 && turn == true)){
-                        reward = -1;
-                    }else{ // draw = 2
-                        reward = 0;
-                    }
-                    actionValues[0] = reward;//put the reward from the game
+
+        if((winner == 1 && turn == true) || (winner == 0 && turn == false)){
+            terminalState = true;
+        }else if((winner == 1 && turn == false) || (winner == 0 && turn == true)){
+            terminalState = true;
+        }else if(winner == 2){
+            terminalState = true;
+        }else{
+            terminalState = false;
+        }
+    }
+
+    private double getMinReward(String nextState) {
+        double min = 999999;
+        double[] array = Driver.qTable.getActionValueArray(nextState);
+        char[] st = nextState.toCharArray();
+        for ( int i = 0; i < array.length; i++ ){
+            if(st[i] == ' '){
+                if(array[i] < min){
+                    min = array[i];
                 }
-                break;
-            case 3:
-            default:
-                terminalState = false;
-                actionValues = Driver.qTable.getActionValueArray(board);
-                if(actionValues != null){
-                    reward = getMaxValue(actionValues);
-                }else{
-                    Driver.qTable.saveState(board); //initializes all the action value pairs with 0
-                    reward = 0;
-                }
-                break;
+            }
+        }
+        return min;
+    }
+
+
+    /**
+     * if we win, reward = +2
+        if we lose,reward = -2
+        if we draw,reward = -1
+        if we are in game, reward = 0
+     */
+    public static double getReward(String board, Game g, Boolean turn) {
+        double reward;
+        int winner = checkWinner(board,g);
+
+        if((winner == 1 && turn == true) || (winner == 0 && turn == false)){
+            reward = 2;
+            Driver.AIWin++;
+        }else if((winner == 1 && turn == false) || (winner == 0 && turn == true)){
+            reward = -2;
+            Driver.AILose++;
+        }else if(winner == 2){
+            reward = -1;
+            Driver.AIDraw++;
+        }else{
+            reward = 0;
         }
 
         return reward;
     }
 
+    /*
+    * 1 - Win X return 0
+    * 2 - Lose
+    * 3 - Draw
+    * */
     public static int checkWinner(String board,Game g){
         char[] state = board.toCharArray();
         int[][] boardStatus = new int[3][3];
@@ -188,6 +252,7 @@ public class AIPlayer {
                 pDistribution.set(i,pDistribution.get(i)/pSum);
             }
 
+
             return getRandomSample(pDistribution,indexList);
         }
     }
@@ -199,90 +264,33 @@ public class AIPlayer {
  */
 
     static int getRandomSample(List<Double> pDistribution, List<Integer> indexList){
+        int[] ind = new int[pDistribution.size()];
+        double p[] = new double[pDistribution.size()];
 
+        for(int i = 0;i<pDistribution.size(); i++){
+            ind[i] = i;
+            p[i] = pDistribution.get(i);
+        }
+        EnumeratedIntegerDistribution dist = new EnumeratedIntegerDistribution(ind,p);
+
+        int idx = dist.sample();
+
+        return indexList.get(idx);
+
+/*
         int n = pDistribution.size();
-        double rU;
-        int nm1 = n - 1;
 
-  /*  *//* record element identities *//*
-        for (int i = 0; i < n; i++){
-            indexList.set(i,i+1);
-        }*/
+        RandomCollection<Integer> rc = new RandomCollection();
 
-    /* sort the probabilities into descending order */
-        double temp;
-        int  temp1;
-        for (int i = 0; i < n; i++) {
-            for (int j = 1; j < (n - i); j++) {
-                if (pDistribution.get(j-1) < pDistribution.get(j)) {
-                    temp = pDistribution.get(j-1);
-                    pDistribution.set(j-1,pDistribution.get(j));
-                    pDistribution.set(j,temp);
-
-                    temp1 = indexList.get(j-1);
-                    indexList.set(j-1,indexList.get(j));
-                    indexList.set(j,temp1);
-                }
-            }
-        }
-
-    /* compute cumulative probabilities */
         for (int i = 1 ; i < n; i++) {
-            pDistribution.set(i, pDistribution.get(i) + pDistribution.get(i - 1));
+            rc.add(pDistribution.get(0),indexList.get(0));
         }
 
-    /* compute the sample */
-        rU = pDistribution.get(new Random().nextInt(pDistribution.size()));
-        int j;
-        for (j = 0; j < nm1; j++) {
-            if (rU <= pDistribution.get(j)) {
-                break;
-            }
-        }
-        return indexList.get(j);
-    }
-
-    public static int getIndexOfLargest( String state, double[] array ){
-
-        char[] st = state.toCharArray();
-
-        if ( array == null || array.length == 0 ){
-            return -1; // null or empty
-        }
-
-        int largest = 0; //Cannot say 0th index is the largest value, might be an invalid move
-        //initializing largest to the first index that has empty space in the state
-        for(int i = 0;i<array.length;i++){
-            if(st[i] == ' '){
-                largest = i;
-                break;
-            }
-        }
-
-        for ( int i = 1; i < array.length; i++ )
-        {
-            if(st[i] == ' '){ //Exclude filled position for selection of next move
-                if ( array[i] > array[largest] ){
-                    largest = i;
-                }
-            }
-        }
-        return largest; // position of the first largest found
-    }
-
-    public static double getMaxValue( double[] array ){
-        if ( array == null || array.length == 0 ) return -1.0;
-
-        int largest = 0;
-        for ( int i = 1; i < array.length; i++ )
-        {
-            if ( array[i] > array[largest] ) largest = i;
-        }
-        return array[largest]; // position of the first largest found
+        return rc.next();*/
     }
 
     public static void result(String s){
-        System.out.println(s);
+//        System.out.println(s);
     }
 
     public String getCurrentState() {
