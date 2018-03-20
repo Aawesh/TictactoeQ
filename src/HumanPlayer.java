@@ -10,7 +10,7 @@ public class HumanPlayer {
         terminalState = false;
     }
 
-    public void makeMove(Game g,AIPlayer aiPlayer){
+    public void makeMove(Game g){
         g.displayBoard();
         int moveIndex;
         do{

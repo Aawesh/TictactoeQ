@@ -23,11 +23,11 @@ public class Driver {
         aMap = new HashMap<>();
         game = new Game(); //TODO pass parameters like discount and all
 
-        qTable = new QTable();
+//        qTable = new QTable("qtable_ai_first.txt");
 
         //Turn is determined randomly. sometimes human play 'X' i.e. 1 sometimes 'O', i.e 0
         Random random = new Random();
-        boolean turn = random.nextBoolean();
+        boolean turn;
 
         humanPlayer = new HumanPlayer();
         aiPlayer = new AIPlayer();
@@ -35,8 +35,8 @@ public class Driver {
 
 
 
-        int N = 500000;
-        N = 0;
+//        int N = 200000;
+        int N = 0;
         double temperatureInitial = 0.5;
         double temperatureFinal = 0.02;
         double temperature;
@@ -49,7 +49,8 @@ public class Driver {
 
             temperature = temperatureInitial + (temperatureFinal - temperatureInitial)*((double)i/(double)N);
 
-            swapTurn = false; // Dummy AI plays first
+            swapTurn = true; // false: Dummy AI plays first, true: AI plays first
+//            swapTurn = random.nextBoolean(); // Anyone can play first
             turn = false; // AI is 0 (O) Dummy AI is 1 (X)
 
             aiPlayer.setTurn(turn); // 0, O
@@ -100,39 +101,42 @@ public class Driver {
         System.out.println();
         System.out.println();
 
-        qTable.save();
+//        qTable.save();
 
 
 
         int P = 100;
         game.setTemperature(0.02);
+
         for (int i = 0;i<P;i++){
             game.resetBoard();
             aiPlayer.setTerminalState(false);
             humanPlayer.setTerminalState(false);
 
-//            swapTurn = random.nextBoolean();
-            swapTurn = false; //human first
-//            turn = random.nextBoolean();
+//            swapTurn = false; //human first
+            swapTurn = random.nextBoolean(); //Anyone can go first
             turn = false;
             aiPlayer.setTurn(turn);
             humanPlayer.setTurn(!turn);
 
             if(swapTurn){
+                qTable = new QTable("qtable_ai_first.txt");
                 while(true){
                     aiPlayer.makeLaernedMove(game);
                     if(game.availableMoves() == 0 || aiPlayer.isTerminalState()){
                         break;
                     }
 
-                    humanPlayer.makeMove(game,aiPlayer);
+                    humanPlayer.makeMove(game);
                     if(game.availableMoves() == 0 || humanPlayer.isTerminalState()){
                         break;
                     }
                 }
             }else{
+                qTable = new QTable("qtable_ai_second.txt");
+
                 while(true){
-                    humanPlayer.makeMove(game,aiPlayer);
+                    humanPlayer.makeMove(game);
                     if(game.availableMoves() == 0 || humanPlayer.isTerminalState()){
                         break;
                     }

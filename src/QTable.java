@@ -1,14 +1,14 @@
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class QTable {
     private HashMap<String,double []> qMap;
+    private String filename;
 
-    public QTable(){
-        qMap = loadQTable();
+    public QTable(String filename){
+        this.filename = filename;
+        this.qMap = loadQTable();
 
     }
 
@@ -33,7 +33,7 @@ public class QTable {
 
     public HashMap<String, double []> loadQTable(){
         HashMap<String, double []> mMap = new HashMap<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("qtable.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = br.readLine()) != null) {
                 double [] values = new double[9];
@@ -47,7 +47,7 @@ public class QTable {
             }
         }catch (IOException e) {
             try {
-                File file = new File("qtable.txt");
+                File file = new File(filename);
 
                 if (!file.exists()){
                     file.createNewFile();
@@ -98,7 +98,7 @@ public class QTable {
 
     public void save(){
         try {
-            File file = new File("qtable.txt");
+            File file = new File(filename);
 
             if (file.exists()){
                 file.delete();
@@ -109,7 +109,7 @@ public class QTable {
 
 
         for (String state : qMap.keySet()) {
-            writeToFile("qtable.txt",state +":"+Arrays.toString(qMap.get(state)).replace("[","").replace("]",""),true);
+            writeToFile(filename,state +":"+Arrays.toString(qMap.get(state)).replace("[","").replace("]",""),true);
         }
     }
 

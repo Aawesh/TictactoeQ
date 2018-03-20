@@ -27,34 +27,30 @@ public class AIPlayer {
         }else{
             double [] actionValues;
             do{
-                //0. If the current board status is not in the Q table, add an entry
                 this.currentState = g.getBoard();
                 Driver.qTable.saveState(this.currentState);
 
-                //1. Select random value from the q table move if the reward is same for all or some move
                 actionValues = Driver.qTable.getActionValueArray(this.currentState);
 
                 this.moveIndex = getAIMove(actionValues,this.currentState,g);
             }while(!g.isValidMove(this.moveIndex));
 
-            //3. update the board with AI move
             g.updateBoard(this.moveIndex,turn);
             String nextState = g.getBoard();
 
             if(!Driver.qTable.containsState(nextState)){
-                Driver.qTable.saveState(nextState); //initializes all the action value pairs with 0
+                Driver.qTable.saveState(nextState);
             }
 
-            findAndSetTerminalState(g.getBoard(),g);
+            findAndSetTerminalState(nextState,g);
 
             double learnedSum;
             if(terminalState){
-                learnedSum = getReward(nextState,g,turn);
+                learnedSum = getReward(nextState,g);
             }else{
-                learnedSum = (getReward(nextState,g,turn) + 0.8 * getMinReward(nextState));
+                learnedSum = (getReward(nextState,g) + 0.8 * getMinReward(nextState));
             }
 
-            //update a values
             if(Driver.aMap.containsKey(currentState+"_"+moveIndex) == false){
                 Driver.aMap.put(currentState+"_"+moveIndex,2);
             }else{
@@ -62,7 +58,7 @@ public class AIPlayer {
             }
 
 
-            double inertiaSum = actionValues[this.moveIndex]; // get reward for current move in current state
+            double inertiaSum = actionValues[this.moveIndex];
 
             double a = 1.0/(double)Driver.aMap.get(currentState+"_"+moveIndex);
             double finalReward = (1.0 - a) * inertiaSum + a * learnedSum ;
@@ -74,16 +70,16 @@ public class AIPlayer {
     public void makeLaernedMove(Game g){
             double [] actionValues;
             do{
-                //0. If the current board status is not in the Q table, add an entry
                 this.currentState = g.getBoard();
                 Driver.qTable.saveState(this.currentState);
 
-                //1. Select random value from the q table move if the reward is same for all or some move
                 actionValues = Driver.qTable.getActionValueArray(this.currentState);
 
                 this.moveIndex = getAIMove(actionValues,this.currentState,g);
             }while(!g.isValidMove(this.moveIndex));
         g.updateBoard(moveIndex,turn);
+
+        findAndSetTerminalState(g.getBoard(),g);
     }
 
 
@@ -91,11 +87,7 @@ public class AIPlayer {
     private void findAndSetTerminalState(String board,Game g) {
         int winner = checkWinner(board,g);
 
-        if((winner == 1 && turn == true) || (winner == 0 && turn == false)){
-            terminalState = true;
-        }else if((winner == 1 && turn == false) || (winner == 0 && turn == true)){
-            terminalState = true;
-        }else if(winner == 2){
+        if((winner == 0|| winner == 1 || winner == 2)){
             terminalState = true;
         }else{
             terminalState = false;
@@ -122,15 +114,21 @@ public class AIPlayer {
         if we lose,reward = -2
         if we draw,reward = -1
         if we are in game, reward = 0
+
+
+        winner = 1: X wins
+        winner = 0: 0 wins
+        winner = 2: Game Draw
+        winner = 3: Game continue
      */
-    public static double getReward(String board, Game g, Boolean turn) {
+    public static double getReward(String board, Game g) {
         double reward;
         int winner = checkWinner(board,g);
 
-        if((winner == 1 && turn == true) || (winner == 0 && turn == false)){
+        if((winner == 0)){
             reward = 2;
             Driver.AIWin++;
-        }else if((winner == 1 && turn == false) || (winner == 0 && turn == true)){
+        }else if((winner == 1)){
             reward = -2;
             Driver.AILose++;
         }else if(winner == 2){
@@ -283,22 +281,14 @@ public class AIPlayer {
         RandomCollection<Integer> rc = new RandomCollection();
 
         for (int i = 1 ; i < n; i++) {
-            rc.add(pDistribution.get(0),indexList.get(0));
+            rc.add(pDistribution.get(i),indexList.get(i));
         }
 
         return rc.next();*/
     }
 
     public static void result(String s){
-//        System.out.println(s);
-    }
-
-    public String getCurrentState() {
-        return this.currentState;
-    }
-
-    public int getMoveIndex() {
-        return this.moveIndex;
+        System.out.println(s);
     }
 
     public static void setTerminalState(boolean state){

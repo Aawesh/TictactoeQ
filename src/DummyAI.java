@@ -1,3 +1,5 @@
+import org.apache.commons.math3.distribution.EnumeratedIntegerDistribution;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -29,22 +31,19 @@ public class DummyAI {
         }else{
             double [] actionValues;
             do{
-                //0. If the current board status is not in the Q table, add an entry
                 this.currentState = g.getBoard();
                 Driver.qTable.saveState(this.currentState);
 
-                //1. Select random value from the q table move if the reward is same for all or some move
                 actionValues = Driver.qTable.getActionValueArray(this.currentState);
 
                 this.moveIndex = getAIMove(actionValues,this.currentState,g);
             }while(!g.isValidMove(this.moveIndex));
 
-            //3. update the board with AI move
             g.updateBoard(this.moveIndex,turn);
             String nextState = g.getBoard();
 
             if(!Driver.qTable.containsState(nextState)){
-                Driver.qTable.saveState(nextState); //initializes all the action value pairs with 0
+                Driver.qTable.saveState(nextState);
             }
 
 
@@ -52,12 +51,11 @@ public class DummyAI {
 
             double learnedSum;
             if(terminalState){
-                learnedSum = getReward(nextState,g,turn);
+                learnedSum = getReward(nextState,g);
             }else{
-                learnedSum = (getReward(nextState,g,turn)+ 0.8 * getMaxReward(nextState));
+                learnedSum = (getReward(nextState,g)+ 0.8 * getMaxReward(nextState));
             }
 
-            //update a values
             if(Driver.aMap.containsKey(currentState+"_"+moveIndex) == false){
                 Driver.aMap.put(currentState+"_"+moveIndex,2);
             }else{
@@ -65,15 +63,13 @@ public class DummyAI {
             }
 
 
-            double inertiaSum = actionValues[this.moveIndex]; // get reward for current move in current state
+            double inertiaSum = actionValues[this.moveIndex];
 
             double a = 1.0/Driver.aMap.get(currentState+"_"+moveIndex);
             double finalReward = (1.0 - a) * inertiaSum + a * learnedSum ;
 
             Driver.qTable.updateQtable(this.currentState,this.moveIndex,finalReward,"ai");
         }
-
-
 
     }
 
@@ -97,17 +93,24 @@ public class DummyAI {
      if we lose,reward = -2
      if we draw,reward = -1
      if we are in game, reward = 0
+
+
+     winner = 1: X wins
+     winner = 0: O wins
+     winner = 2: Game Draw
+     winner = 3: Game continue
      */
-    public static double getReward(String board, Game g, Boolean turn) {
+    public static double getReward(String board, Game g) {
         double reward;
         int winner = checkWinner(board,g);
 
-        if((winner == 1 && turn == true) || (winner == 0 && turn == false)){
-            reward = -2;
-            Driver.AILose++;
-        }else if((winner == 1 && turn == false) || (winner == 0 && turn == true)){
+
+        if((winner == 0)){
             reward = 2;
             Driver.AIWin++;
+        }else if((winner == 1)){
+            reward = -2;
+            Driver.AILose++;
         }else if(winner == 2){
             reward = -1;
             Driver.DummyAIDraw++;
@@ -121,11 +124,7 @@ public class DummyAI {
     private void findAndSetTerminalState(String board,Game g) {
         int winner = checkWinner(board,g);
 
-        if((winner == 1 && turn == true) || (winner == 0 && turn == false)){
-            terminalState = true;
-        }else if((winner == 1 && turn == false) || (winner == 0 && turn == true)){
-            terminalState = true;
-        }else if(winner == 2){
+        if((winner == 0|| winner == 1 || winner == 2)){
             terminalState = true;
         }else{
             terminalState = false;
@@ -175,75 +174,31 @@ public class DummyAI {
 
     static int getRandomSample(List<Double> pDistribution, List<Integer> indexList){
 
-        int n = pDistribution.size();
-        double rU;
-        int nm1 = n - 1;
+        int[] ind = new int[pDistribution.size()];
+        double p[] = new double[pDistribution.size()];
 
-  /*  *//* record element identities *//*
-        for (int i = 0; i < n; i++){
-            indexList.set(i,i+1);
-        }*/
-
-    /* sort the probabilities into descending order */
-        double temp;
-        int  temp1;
-        for (int i = 0; i < n; i++) {
-            for (int j = 1; j < (n - i); j++) {
-                if (pDistribution.get(j-1) < pDistribution.get(j)) {
-                    temp = pDistribution.get(j-1);
-                    pDistribution.set(j-1,pDistribution.get(j));
-                    pDistribution.set(j,temp);
-
-                    temp1 = indexList.get(j-1);
-                    indexList.set(j-1,indexList.get(j));
-                    indexList.set(j,temp1);
-                }
-            }
+        for(int i = 0;i<pDistribution.size(); i++){
+            ind[i] = i;
+            p[i] = pDistribution.get(i);
         }
+        EnumeratedIntegerDistribution dist = new EnumeratedIntegerDistribution(ind,p);
 
-    /* compute cumulative probabilities */
+        int idx = dist.sample();
+
+        return indexList.get(idx);
+
+
+     /*   int n = pDistribution.size();
+
+        RandomCollection<Integer> rc = new RandomCollection();
+
         for (int i = 1 ; i < n; i++) {
-            pDistribution.set(i, pDistribution.get(i) + pDistribution.get(i - 1));
+            rc.add(pDistribution.get(i),indexList.get(i));
         }
 
-    /* compute the sample */
-        rU = pDistribution.get(new Random().nextInt(pDistribution.size()));
-        int j;
-        for (j = 0; j < nm1; j++) {
-            if (rU <= pDistribution.get(j)) {
-                break;
-            }
-        }
-        return indexList.get(j);
+        return rc.next();*/
     }
 
-    public static double getReward(String board,boolean turn,Game g){
-        double reward;
-
-        int winner = checkWinner(board,g);
-
-        if(winner == 0){
-            Driver.AIWin++;
-        }else if(winner == 1){
-            Driver.AILose++;
-        }else if(winner == 2){
-            Driver.DummyAIDraw++;
-        }
-
-        if((winner == 1 && turn == true) || (winner == 0 && turn == false)){
-            reward = -1;
-        }else{
-            reward = 0; //dummy value
-        }
-
-        if(winner == 0 ||winner == 1 ||winner == 2){
-            terminalState = true;
-        }else{
-            terminalState = false;
-        }
-
-        return reward;
-    }
 
     public static int checkWinner(String board,Game g){
         char[] state = board.toCharArray();
@@ -319,30 +274,7 @@ public class DummyAI {
     }
 
     public static void result(String s){
-//        System.out.println(s);
-    }
-
-
-    public static int getIndexOfLargest( double[] array ){
-        if ( array == null || array.length == 0 ) return -1; // null or empty
-
-        int largest = 0;
-        for ( int i = 1; i < array.length; i++ )
-        {
-            if ( array[i] > array[largest] ) largest = i;
-        }
-        return largest; // position of the first largest found
-    }
-
-    public static double getMaxValue( double[] array ){
-        if ( array == null || array.length == 0 ) return -1.0;
-
-        int largest = 0;
-        for ( int i = 1; i < array.length; i++ )
-        {
-            if ( array[i] > array[largest] ) largest = i;
-        }
-        return array[largest]; // position of the first largest found
+        System.out.println(s);
     }
 
     public static void setTerminalState(boolean state){
