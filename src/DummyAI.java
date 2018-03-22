@@ -65,8 +65,8 @@ public class DummyAI {
 
             double inertiaSum = actionValues[this.moveIndex];
 
-            double a = 1.0/Driver.aMap.get(currentState+"_"+moveIndex);
-            double finalReward = (1.0 - a) * inertiaSum + a * learnedSum ;
+            double a = 1.0/(double)Driver.aMap.get(currentState+"_"+moveIndex);
+            double finalReward = ((1.0 - a) * inertiaSum + (a * learnedSum)) ;
 
             Driver.qTable.updateQtable(this.currentState,this.moveIndex,finalReward,"ai");
         }
@@ -162,8 +162,58 @@ public class DummyAI {
                 pDistribution.set(i,pDistribution.get(i)/pSum);
             }
 
-            return getRandomSample(pDistribution,indexList);
+//            return getRandomSample(pDistribution,indexList);
+            return getRandomSampleNew(pDistribution,indexList);
+
         }
+    }
+
+    private static int getRandomSampleNew(List<Double> pDistribution, List<Integer> indexList) {
+        int[] values = new int[pDistribution.size()];
+        double pdf[] = new double[pDistribution.size()];
+
+        for(int i = 0;i<pDistribution.size(); i++){
+            values[i] = indexList.get(i);
+            pdf[i] = pDistribution.get(i);
+        }
+
+        return randsample(values,1,true,pdf);
+    }
+
+    public static int randsample(int[] values, int numsamples, boolean withReplacement, double [] pdf) {
+        try{
+            if(withReplacement) {
+                double[] cdf = new double[pdf.length];
+                cdf[0] = pdf[0];
+                for (int i = 1; i < pdf.length; i++) {
+                    cdf[i] = cdf[i - 1] + pdf[i];
+                }
+
+                int[] results = new int[numsamples];
+                for(int i=0; i<numsamples; i++) {
+                    int currentPosition = 0;
+
+                    while(new Random().nextDouble() > cdf[currentPosition] && currentPosition < cdf.length) {
+                        currentPosition++; //Check the next one.
+                    }
+
+                    if(currentPosition < cdf.length) { //It worked!
+                        results[i] = values[currentPosition];
+                    } else { //It didn't work.. let's fail gracefully I guess.
+                        results[i] = values[cdf.length-1];
+                        // And assign it the last value.
+                    }
+                }
+
+                //Now we're done and can return the results!
+                return results[numsamples-1];
+            } else { //Without replacement.
+                System.out.println("This is unimplemented!");
+            }
+        }catch (Exception e){
+            System.out.println("e = " + e);
+        }
+        return -1;
     }
 
     /* Unequal probability sampling; with-replacement case
@@ -274,7 +324,7 @@ public class DummyAI {
     }
 
     public static void result(String s){
-        System.out.println(s);
+//        System.out.println(s);
     }
 
     public static void setTerminalState(boolean state){

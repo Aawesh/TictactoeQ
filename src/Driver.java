@@ -23,7 +23,7 @@ public class Driver {
         aMap = new HashMap<>();
         game = new Game(); //TODO pass parameters like discount and all
 
-//        qTable = new QTable("qtable_ai_first.txt");
+        qTable = new QTable("qtable_ai_second.txt");
 
         //Turn is determined randomly. sometimes human play 'X' i.e. 1 sometimes 'O', i.e 0
         Random random = new Random();
@@ -36,7 +36,7 @@ public class Driver {
 
 
 //        int N = 200000;
-        int N = 0;
+        int N = 100000000;
         double temperatureInitial = 0.5;
         double temperatureFinal = 0.02;
         double temperature;
@@ -49,7 +49,7 @@ public class Driver {
 
             temperature = temperatureInitial + (temperatureFinal - temperatureInitial)*((double)i/(double)N);
 
-            swapTurn = true; // false: Dummy AI plays first, true: AI plays first
+            swapTurn = false; // false: Dummy AI plays first, true: AI plays first
 //            swapTurn = random.nextBoolean(); // Anyone can play first
             turn = false; // AI is 0 (O) Dummy AI is 1 (X)
 
@@ -101,11 +101,11 @@ public class Driver {
         System.out.println();
         System.out.println();
 
-//        qTable.save();
+        qTable.save();
 
 
 
-        int P = 100;
+        int P = 0;
         game.setTemperature(0.02);
 
         for (int i = 0;i<P;i++){
