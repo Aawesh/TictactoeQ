@@ -10,7 +10,7 @@ public class HumanPlayer {
         terminalState = false;
     }
 
-    public void makeMove(Game g){
+    public void makeMove(Game g,int count){
         g.displayBoard();
         int moveIndex;
         do{
@@ -18,7 +18,7 @@ public class HumanPlayer {
             moveIndex = scanner.nextInt();
         }while(!g.isValidMove(moveIndex));
 
-        g.updateBoard(moveIndex,turn);
+        g.updateBoard(moveIndex,turn,count);//TODO;
 
         findAndSetTerminalState(g.getBoard(),turn,g);
     }
@@ -34,6 +34,19 @@ public class HumanPlayer {
 
     public static int checkWinner(String board,Game g){
         char[] state = board.toCharArray();
+
+        for(int i = 0;i<state.length;i++){
+            if(state[i] != ' ') {
+                if (decode(state[i]) < 88) {
+                    state[i] = '0';
+                } else if (decode(state[i]) >= 88) {
+                    state[i] = '1';
+                } else {
+                    System.out.println("Error============ decode Human");
+                }
+            }
+        }
+
         int[][] boardStatus = new int[3][3];
         int k = 0;
         for(int i = 0;i<3;i++){
@@ -142,6 +155,10 @@ public class HumanPlayer {
 
     public void setTurn(boolean turn){
         this.turn = turn;
+    }
+
+    public static int decode(char s){
+        return (((int)s));
     }
 
 }

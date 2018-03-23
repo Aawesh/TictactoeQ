@@ -16,14 +16,14 @@ public class AIPlayer {
         random = new Random();
     }
 
-    public void makeMove(Game g,boolean randomMoveFlag){
+    public void makeMove(Game g,boolean randomMoveFlag,int count){
 
         if(randomMoveFlag){
             int moveIndex;
             do{
                 moveIndex = random.nextInt(9);
             }while(!g.isValidMove(moveIndex));
-            g.updateBoard(moveIndex,turn);
+            g.updateBoard(moveIndex,turn,count);
         }else{
             double [] actionValues;
             do{
@@ -35,7 +35,7 @@ public class AIPlayer {
                 this.moveIndex = getAIMove(actionValues,this.currentState,g);
             }while(!g.isValidMove(this.moveIndex));
 
-            g.updateBoard(this.moveIndex,turn);
+            g.updateBoard(this.moveIndex,turn,count);
             String nextState = g.getBoard();
 
             if(!Driver.qTable.containsState(nextState)){
@@ -48,7 +48,7 @@ public class AIPlayer {
             if(terminalState){
                 learnedSum = getReward(nextState,g);
             }else{
-                learnedSum = (getReward(nextState,g) + 0.8 * getMinReward(nextState));
+                learnedSum = (getReward(nextState,g) + 0.9 * getMinReward(nextState));
             }
 
             if(Driver.aMap.containsKey(currentState+"_"+moveIndex) == false){
@@ -67,7 +67,7 @@ public class AIPlayer {
         }
     }
 
-    public void makeLaernedMove(Game g){
+    public void makeLaernedMove(Game g, int count){
             double [] actionValues;
             do{
                 this.currentState = g.getBoard();
@@ -77,11 +77,10 @@ public class AIPlayer {
 
                 this.moveIndex = getAIMove(actionValues,this.currentState,g);
             }while(!g.isValidMove(this.moveIndex));
-        g.updateBoard(moveIndex,turn);
+        g.updateBoard(moveIndex,turn,count); //TODO
 
         findAndSetTerminalState(g.getBoard(),g);
     }
-
 
 
     private void findAndSetTerminalState(String board,Game g) {
@@ -148,6 +147,20 @@ public class AIPlayer {
     * */
     public static int checkWinner(String board,Game g){
         char[] state = board.toCharArray();
+
+        for(int i = 0;i<state.length;i++){
+            if(state[i] != ' ') {
+                if (decode(state[i]) < 88) {
+                    state[i] = '0';
+                } else if (decode(state[i]) >= 88) {
+                    state[i] = '1';
+                } else {
+                    System.out.println("Error============ AI");
+                }
+            }
+        }
+
+
         int[][] boardStatus = new int[3][3];
         int k = 0;
         for(int i = 0;i<3;i++){
@@ -251,8 +264,8 @@ public class AIPlayer {
             }
 
 
-//            return getRandomSample(pDistribution,indexList);
-            return getRandomSampleNew(pDistribution,indexList);
+            return getRandomSample(pDistribution,indexList);
+//            return getRandomSampleNew(pDistribution,indexList);
         }
     }
 
@@ -352,4 +365,9 @@ public class AIPlayer {
     public void setTurn(boolean turn){
         this.turn = turn;
     }
+
+    public static int decode(char s){
+        return (((int)s));
+    }
+
 }

@@ -36,9 +36,10 @@ public class Driver {
 
 
 //        int N = 200000;
-        int N = 100000000;
+        int N = 10000000;
+//        int N = 0;
         double temperatureInitial = 0.5;
-        double temperatureFinal = 0.02;
+        double temperatureFinal = 0.005;
         double temperature;
 
         boolean swapTurn;
@@ -61,33 +62,40 @@ public class Driver {
 
             boolean randomMoveFlag;
 
+            int count;
             if(swapTurn){
                 randomMoveFlag = true;
+                count = 0;
                 while(true){
-                    aiPlayer.makeMove(game,randomMoveFlag);
+                    aiPlayer.makeMove(game,randomMoveFlag,count);
                     if(game.availableMoves() == 0 || aiPlayer.isTerminalState()){
                         break;
                     }
+                    count++;
                     randomMoveFlag = false;
 
-                    dummyAI.makeMove(game,randomMoveFlag);
+                    dummyAI.makeMove(game,randomMoveFlag,count);
                     if(game.availableMoves() == 0 || dummyAI.isTerminalState()){
                         break;
                     }
+                    count++;
                 }
             }else{
                 randomMoveFlag = true;
+                count = 0;
                 while(true){
-                    dummyAI.makeMove(game,randomMoveFlag);
+                    dummyAI.makeMove(game,randomMoveFlag,count);
                     if(game.availableMoves() == 0 || dummyAI.isTerminalState()){
                         break;
                     }
+                    count++;
 
                     randomMoveFlag = false;
-                    aiPlayer.makeMove(game,randomMoveFlag);
+                    aiPlayer.makeMove(game,randomMoveFlag,count);
                     if(game.availableMoves() == 0 || aiPlayer.isTerminalState()){
                         break;
                     }
+                    count++;
                 }
             }
 //                game.displayBoard();
@@ -105,46 +113,53 @@ public class Driver {
 
 
 
-        int P = 0;
-        game.setTemperature(0.02);
+        int P = 100;
+        game.setTemperature(0.005);
 
         for (int i = 0;i<P;i++){
             game.resetBoard();
             aiPlayer.setTerminalState(false);
             humanPlayer.setTerminalState(false);
 
-//            swapTurn = false; //human first
-            swapTurn = random.nextBoolean(); //Anyone can go first
+            swapTurn = false; //human first
+//            swapTurn = random.nextBoolean(); //Anyone can go first
             turn = false;
             aiPlayer.setTurn(turn);
             humanPlayer.setTurn(!turn);
-
+            int count;
             if(swapTurn){
                 qTable = new QTable("qtable_ai_first.txt");
+                count = 0;
                 while(true){
-                    aiPlayer.makeLaernedMove(game);
+                    aiPlayer.makeLaernedMove(game,count);
                     if(game.availableMoves() == 0 || aiPlayer.isTerminalState()){
                         break;
                     }
 
-                    humanPlayer.makeMove(game);
+                    count ++;
+                    humanPlayer.makeMove(game,count);
                     if(game.availableMoves() == 0 || humanPlayer.isTerminalState()){
                         break;
                     }
+                    count ++;
                 }
             }else{
                 qTable = new QTable("qtable_ai_second.txt");
+                count = 0;
 
                 while(true){
-                    humanPlayer.makeMove(game);
+                    humanPlayer.makeMove(game,count);
                     if(game.availableMoves() == 0 || humanPlayer.isTerminalState()){
                         break;
                     }
 
-                    aiPlayer.makeLaernedMove(game);
+                    count ++;
+
+                    aiPlayer.makeLaernedMove(game,count);
                     if(game.availableMoves() == 0 || aiPlayer.isTerminalState()){
                         break;
                     }
+                    count ++;
                 }
             }
 
