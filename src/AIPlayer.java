@@ -109,6 +109,21 @@ public class AIPlayer {
     }
 
 
+    private double getMaxReward(String nextState) {
+        double max = 0.0;
+        double[] array = Driver.qTable.getActionValueArray(nextState);
+        char[] st = nextState.toCharArray();
+        for ( int i = 0; i < array.length; i++ ){
+            if(st[i] == ' '){
+                if(array[i] > max){
+                    max = array[i];
+                }
+            }
+        }
+        return max;
+    }
+
+
     /**
      * if we win, reward = +2
         if we lose,reward = -2
@@ -132,7 +147,7 @@ public class AIPlayer {
             reward = -2;
             Driver.AILose++;
         }else if(winner == 2){
-            reward = -1;
+            reward = 0;
             Driver.AIDraw++;
         }else{
             reward = 0;
@@ -251,8 +266,8 @@ public class AIPlayer {
             }
 
 
-//            return getRandomSample(pDistribution,indexList);
-            return getRandomSampleNew(pDistribution,indexList);
+            return getRandomSample(pDistribution,indexList);
+//            return getRandomSampleNew(pDistribution,indexList);
         }
     }
 

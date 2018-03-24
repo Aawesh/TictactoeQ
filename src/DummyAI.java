@@ -73,6 +73,21 @@ public class DummyAI {
 
     }
 
+
+    private double getMinReward(String nextState) {
+        double min = 999999;
+        double[] array = Driver.qTable.getActionValueArray(nextState);
+        char[] st = nextState.toCharArray();
+        for ( int i = 0; i < array.length; i++ ){
+            if(st[i] == ' '){
+                if(array[i] < min){
+                    min = array[i];
+                }
+            }
+        }
+        return min;
+    }
+
     private double getMaxReward(String nextState) {
         double max = 0.0;
         double[] array = Driver.qTable.getActionValueArray(nextState);
@@ -112,7 +127,7 @@ public class DummyAI {
             reward = -2;
             Driver.AILose++;
         }else if(winner == 2){
-            reward = -1;
+            reward = 0;
             Driver.DummyAIDraw++;
         }else{
             reward = 0;
@@ -162,8 +177,8 @@ public class DummyAI {
                 pDistribution.set(i,pDistribution.get(i)/pSum);
             }
 
-//            return getRandomSample(pDistribution,indexList);
-            return getRandomSampleNew(pDistribution,indexList);
+            return getRandomSample(pDistribution,indexList);
+//            return getRandomSampleNew(pDistribution,indexList);
 
         }
     }
