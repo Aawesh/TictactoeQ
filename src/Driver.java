@@ -23,7 +23,7 @@ public class Driver {
         aMap = new HashMap<>();
         game = new Game(); //TODO pass parameters like discount and all
 
-        qTable = new QTable("qtable_ai_first.txt");
+        qTable = new QTable("qTable_ai_second.txt");
 
         //Turn is determined randomly. sometimes human play 'X' i.e. 1 sometimes 'O', i.e 0
         Random random = new Random();
@@ -49,7 +49,7 @@ public class Driver {
 
             temperature = temperatureInitial + (temperatureFinal - temperatureInitial)*((double)i/(double)N);
 
-            swapTurn = true; // false: Dummy AI plays first, true: AI plays first
+            swapTurn = false; // false: Dummy AI plays first, true: AI plays first
 //            swapTurn = random.nextBoolean(); // Anyone can play first
             turn = false; // AI is 0 (O) Dummy AI is 1 (X)
 
@@ -107,21 +107,21 @@ public class Driver {
 
 
         int P = 100;
-        game.setTemperature(0.005);
+        game.setTemperature(0.002);
 
         for (int i = 0;i<P;i++){
             game.resetBoard();
             aiPlayer.setTerminalState(false);
             humanPlayer.setTerminalState(false);
 
-//            swapTurn = true; //human first
-            swapTurn = random.nextBoolean(); //Anyone can go first
+            swapTurn = true; //human first
+//            swapTurn = random.nextBoolean(); //Anyone can go first
             turn = false;
             aiPlayer.setTurn(turn);
             humanPlayer.setTurn(!turn);
 
             if(swapTurn){
-                qTable = new QTable("qtable_ai_first.txt");
+                qTable = new QTable("qTable_ai_first.txt");
                 while(true){
                     aiPlayer.makeLaernedMove(game);
                     if(game.availableMoves() == 0 || aiPlayer.isTerminalState()){
@@ -134,7 +134,7 @@ public class Driver {
                     }
                 }
             }else{
-                qTable = new QTable("qtable_ai_second.txt");
+                qTable = new QTable("qTable_ai_second.txt");
 
                 while(true){
                     humanPlayer.makeMove(game);
